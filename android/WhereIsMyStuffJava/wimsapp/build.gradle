@@ -15,7 +15,8 @@ android {
 
         testApplicationId "edu.cuny.chen.whereismystuff.test"
 //        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
-        testInstrumentationRunner "io.cucumber.android.runner.CucumberAndroidJUnitRunner"
+//        testInstrumentationRunner "io.cucumber.android.runner.CucumberAndroidJUnitRunner"
+        testInstrumentationRunner "edu.cuny.chen.whereismystuff.test.HybridTestRunner"
     }
 
     buildTypes {
