@@ -11,4 +11,4 @@ Feature: Welcome Users
     And it shows a 'Version: 0.01' message
     And it shows a 'Locate Items' button
     When I click the 'Locate Items' button
-    Then It launches the LocateItByWordsActivity
+    Then It launches the LocateItemsByWordsActivity

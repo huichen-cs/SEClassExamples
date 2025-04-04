@@ -89,7 +89,7 @@ public class WelcomeUsersSteps {
     }
 
 
-    @Then("It launches the LocateItByWordsActivity")
+    @Then("It launches the LocateItemsByWordsActivity")
     public void itLaunchesTheLocateItByWordsActivity() {
         onView(withId(R.id.locate_items_by_words))
                 .check(matches(isDisplayed()));
