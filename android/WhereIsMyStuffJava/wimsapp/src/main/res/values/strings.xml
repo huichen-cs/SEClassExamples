@@ -4,4 +4,5 @@
     <string name="author_name">Author: Chen</string>
     <string name="version_number">Version: 0.01</string>
     <string name="locate_items">Locate Items</string>
+    <string name="enter_item_description">Enter item description</string>
 </resources>
