@@ -1,7 +1,6 @@
 package edu.cuny.chen.whereismystuff;
 
 import android.os.Bundle;
-import android.util.Log;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -29,14 +28,14 @@ public class LocateItemsByWordsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_locate_items_by_words);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.locate_items_by_words), (v, insets) -> {
+        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.locate_items_by_words_layout), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
 
         // Setup RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.results_container);
+        RecyclerView recyclerView = findViewById(R.id.results_container_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ItemsAdapter();
         recyclerView.setAdapter(adapter);

@@ -22,7 +22,6 @@ import java.util.List;
 import java.util.Map;
 
 import edu.cuny.chen.whereismystuff.LocateItemsByWordsActivity;
-import edu.cuny.chen.whereismystuff.WhereIsMyStuffApplication;
 import edu.cuny.chen.whereismystuff.model.Item;
 import edu.cuny.chen.whereismystuff.model.ItemDatabase;
 import edu.cuny.chen.whereismystuff.model.Location;
@@ -105,7 +104,7 @@ public class LocateItemsByWordsSteps {
 
         for (Map<String, String> expectedItem : expectedItems) {
             onView(allOf(
-                    isDescendantOfA(withId(R.id.results_container)),
+                    isDescendantOfA(withId(R.id.results_container_recyclerview)),
                     hasDescendant(allOf(
                             withId(R.id.item_description_textview),
                             withText(expectedItem.get("Item"))

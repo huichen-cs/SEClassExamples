@@ -11,12 +11,8 @@ import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
 
 import androidx.test.core.app.ActivityScenario;
-import androidx.test.platform.app.InstrumentationRegistry;
 
 import static junit.framework.TestCase.fail;
-
-import android.app.Instrumentation;
-import android.content.Intent;
 
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
@@ -91,7 +87,7 @@ public class WelcomeUsersSteps {
 
     @Then("It launches the LocateItemsByWordsActivity")
     public void itLaunchesTheLocateItByWordsActivity() {
-        onView(withId(R.id.locate_items_by_words))
+        onView(withId(R.id.locate_items_by_words_layout))
                 .check(matches(isDisplayed()));
     }
 
