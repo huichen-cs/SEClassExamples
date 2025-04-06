@@ -86,10 +86,19 @@ public class LocateItemsByWordsSteps {
         }
     }
 
-    @When("I enter 'screwdriver' in the item description box")
-    public void iEnterInTheItemDescriptionBox() {
+    private void iEnterInTheItemDescriptionBox(final String searchTerm) {
         onView(withId(R.id.description_input_textview))
-                .perform(typeText("screwdriver"));
+                .perform(typeText(searchTerm));
+    }
+
+    @When("I enter 'screwdriver' in the item description box")
+    public void iEnterInTheItemDescriptionBoxLowerCase() {
+        iEnterInTheItemDescriptionBox("screwdriver");
+    }
+
+    @When("I enter 'SCREWDRIVER' in the item description box")
+    public void iEnterInTheItemDescriptionBoxUperCase() {
+        iEnterInTheItemDescriptionBox("SCREWDRIVER");
     }
 
     @And("I press the 'Locate Items' button")

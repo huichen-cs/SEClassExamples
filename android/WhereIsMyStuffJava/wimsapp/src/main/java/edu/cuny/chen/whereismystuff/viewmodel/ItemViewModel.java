@@ -5,35 +5,34 @@ import android.util.Log;
 
 import androidx.annotation.NonNull;
 import androidx.lifecycle.AndroidViewModel;
-import androidx.lifecycle.LifecycleOwner;
 import androidx.lifecycle.LiveData;
-import androidx.lifecycle.Observer;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Transformations;
 
 import java.util.List;
 
-import edu.cuny.chen.whereismystuff.model.ItemDatabase;
+import edu.cuny.chen.whereismystuff.model.ItemRepository;
 import edu.cuny.chen.whereismystuff.model.ItemWithLocation;
 
 public class ItemViewModel extends AndroidViewModel {
     private static final String TAG = "ItemViewModel";
-    private final ItemDatabase database;
+    private final MutableLiveData<String> searchQuery = new MutableLiveData<>();
+    private final LiveData<List<ItemWithLocation>> itemData;
 
     public ItemViewModel(@NonNull Application application) {
         super(application);
-        database = ItemDatabase.getDatabase(application);
+        ItemRepository itemRepository = new ItemRepository(application);
+        itemData = Transformations.switchMap(
+                searchQuery,
+                itemRepository::searchItems
+        );
     }
 
-    public List<ItemWithLocation> searchItems(String searchTerm) {
-        List<ItemWithLocation> searchResults = database.itemDao().searchItems(searchTerm);
-        Log.d(TAG, "searchTerm: " + searchTerm);
-        Log.d(TAG, "searchResults: " + searchResults);
-        return searchResults;
+    public void searchItems(String query) {
+        searchQuery.setValue(query);
     }
 
-//    public LiveData<List<ItemWithLocation>> searchItems(String searchTerm) {
-//        return database.itemDao().searchItems(searchTerm);
-//    }
-//    public LiveData<List<ItemWithLocation>> getSearchResults() {
-//        return searchResults;
-//    }
+    public LiveData<List<ItemWithLocation>> getItemData() {
+        return itemData;
+    }
 }

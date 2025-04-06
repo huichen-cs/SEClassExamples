@@ -19,3 +19,20 @@ Feature: Locate Item by Description Words
       |Flathead screwdriver set   |Office desk | bottom right drawer| 1      |
       |Philip head screwdriver set|Office desk | middle right drawer| 1      |
       |Precision screwdriver set  |Office desk | top right drawer   | 2      |
+
+  Scenario: Locate items with upper case search phrases
+    Given I have a LocateItemByDescriptionActivity
+    And I have the following items
+      |Item                       |Location   | Subarea            |Quantity|
+      |Flathead screwdriver set   |Office desk| bottom right drawer| 1      |
+      |Philip head screwdriver set|Office desk| middle right drawer| 1      |
+      |Precision screwdriver set  |Office desk| top right drawer   | 2      |
+      |Amazon basics multimeter   |Home office| bookcase, top shelf| 1      |
+      |Fluke multimeter           |Home office| bookcase, top shelf| 1      |
+    When I enter 'SCREWDRIVER' in the item description box
+    And I press the 'Locate Items' button
+    Then I should see the following items on the display
+      |Item                       |Location    | Subarea            |Quantity|
+      |Flathead screwdriver set   |Office desk | bottom right drawer| 1      |
+      |Philip head screwdriver set|Office desk | middle right drawer| 1      |
+      |Precision screwdriver set  |Office desk | top right drawer   | 2      |

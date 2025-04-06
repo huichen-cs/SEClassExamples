@@ -1,5 +1,6 @@
 package edu.cuny.chen.whereismystuff.model;
 
+import androidx.lifecycle.LiveData;
 import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.Query;
@@ -14,6 +15,6 @@ public interface ItemDao {
     // Query with JOIN to get item + location data
     @Query("SELECT I.*, L.description as locationDescription, L.area as locationArea " +
             "FROM Items as I INNER JOIN Locations AS L ON I.locationId = L.id " +
-            "WHERE I.description LIKE '%' || :searchTerm || '%'")
-    List<ItemWithLocation> searchItems(String searchTerm);
+            "WHERE LOWER(I.description) LIKE '%' || LOWER(:searchTerm) || '%'")
+    LiveData<List<ItemWithLocation>> searchItems(String searchTerm);
 }

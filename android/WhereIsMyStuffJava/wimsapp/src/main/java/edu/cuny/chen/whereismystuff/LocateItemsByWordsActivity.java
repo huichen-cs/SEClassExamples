@@ -41,17 +41,16 @@ public class LocateItemsByWordsActivity extends AppCompatActivity {
         recyclerView.setAdapter(adapter);
 
         ItemViewModel viewModel = new ViewModelProvider(this).get(ItemViewModel.class);
+        viewModel.getItemData().observe(this, items -> {
+            adapter.setItems(items);
+        });
 
         Button button = findViewById(R.id.locate_items_button);
         TextView textView = findViewById((R.id.description_input_textview));
         button.setOnClickListener(
                 v -> {
                     String searchTerm = textView.getText().toString().trim();
-                    Executors.newSingleThreadExecutor().execute(() -> {
-                        List<ItemWithLocation> itemList = viewModel.searchItems(searchTerm);
-                        runOnUiThread(() -> adapter.setItems(itemList));
-                    });
-
+                    viewModel.searchItems(searchTerm);
                 }
         );
     }
