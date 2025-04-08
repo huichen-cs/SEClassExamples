@@ -1,8 +1,9 @@
 <resources>
     <string name="app_name">Where Is My Stuff</string>
-    <string name="welcome_user_message">Welcome to Where is My Stuff App</string>
+    <string name="welcome_user_message">Welcome!</string>
     <string name="author_name">Author: Chen</string>
     <string name="version_number">Version: 0.01</string>
     <string name="locate_items">Locate Items</string>
     <string name="enter_item_description">Enter item description</string>
+    <string name="add_items">Add Items</string>
 </resources>

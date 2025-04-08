@@ -29,43 +29,53 @@ public class WelcomeUsersSteps {
         // No need to launch here if you're doing it in the When step
     }
 
-    @Given("I have a WelcomeUsersActivity and a LocateItByWordsActivity")
-    public void verifyActivityExists() {
-        // Verify class exists without launching
+    private void iHaveActivity(String activity) {
         try {
-            Class.forName("edu.cuny.chen.whereismystuff.WelcomeUsersActivity");
+            Class.forName(activity);
         } catch (ClassNotFoundException e) {
-            fail("WelcomeUsersActivity does not exist");
+            fail("Activity " + activity + " does not exist");
         }
-
-        try {
-            Class.forName("edu.cuny.chen.whereismystuff.LocateItemsByWordsActivity");
-        } catch (ClassNotFoundException e) {
-            fail("LocateItByWordsActivity does not exist");
-        }
-
     }
 
-    @When("It launches it on the device")
+
+    @Given("I have a WelcomeUsersActivity")
+    public void iHaveAWelcomeUsersActivity() {
+        iHaveActivity("edu.cuny.chen.whereismystuff.WelcomeUsersActivity");
+    }
+
+    @Given("I have a WelcomeUsersActivity and a LocateItemsByWordsActivity")
+    public void iHaveWelcomeUserAndLocateItemsByWordsActivities() {
+        iHaveAWelcomeUsersActivity();
+
+        iHaveActivity("edu.cuny.chen.whereismystuff.LocateItemsByWordsActivity");
+    }
+
+    @Given("I have a WelcomeUsersActivity and an AddItemsByTypingActivity")
+    public void iHaveAWelcomeUsersAndAnAddItemsByTypingActivities() {
+        iHaveAWelcomeUsersActivity();
+        iHaveActivity("edu.cuny.chen.whereismystuff.AddItemsByTypingActivity");
+    }
+
+    @When("It launches the WelcomeUsersActivity on the device")
     public void launchActivity() {
         scenario = ActivityScenario.launch(WelcomeUsersActivity.class);
     }
 
-    @Then("it shows a 'Welcome to Where Is My Stuff App' message")
-    public void verifyWelcomeMessage() {
-        onView(withText("Welcome to Where is My Stuff App"))
+    @Then("it shows a 'Welcome!' message")
+    public void itShowsWelcomeMessage() {
+        onView(withText("Welcome!"))
                 .check(matches(isDisplayed()));
     }
 
     @Then("it shows a 'Author: Chen' message")
-    public void verifyAuthorMessage() {
+    public void itShowsAuthorMessage() {
         onView(withId(R.id.author_textview))
                 .check(matches(withText("Author: Chen")))
                 .check(matches(isDisplayed()));
     }
 
     @Then("it shows a 'Version: 0.01' message")
-    public void verifyVersionMessage() {
+    public void itShowsVersionNumber() {
         onView(withId(R.id.version_textview))
                 .check(matches(withText("Version: 0.01")))
                 .check(matches(isDisplayed()));
@@ -79,15 +89,33 @@ public class WelcomeUsersSteps {
                 .check(matches(isDisplayed()));
     }
 
+    @Then("it shows a 'Add Items' button")
+    public void itShowsAAddItemsButton() {
+        onView(withId(R.id.add_items_button))
+                .check(matches(withText("Add Items")))
+                .check(matches(isDisplayed()));
+    }
+
     @When("I click the 'Locate Items' button")
-    public void iClickTheLocateItButton() {
+    public void iClickTheLocateItemsButton() {
         onView(withId(R.id.locate_items_button)).perform(click());
+    }
+
+    @When("I click the 'Add Items' button")
+    public void iClickTheAddItemsButton() {
+        onView(withId(R.id.add_items_button)).perform(click());
     }
 
 
     @Then("It launches the LocateItemsByWordsActivity")
     public void itLaunchesTheLocateItByWordsActivity() {
         onView(withId(R.id.locate_items_by_words_layout))
+                .check(matches(isDisplayed()));
+    }
+
+    @Then("It launches the AddItemsByTypingActivity")
+    public void itLaunchesTheAddItemsByTypingActivity() {
+        onView(withId(R.id.add_items_by_typing_layout))
                 .check(matches(isDisplayed()));
     }
 

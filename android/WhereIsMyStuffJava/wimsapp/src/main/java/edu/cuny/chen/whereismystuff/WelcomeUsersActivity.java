@@ -32,5 +32,15 @@ public class WelcomeUsersActivity extends AppCompatActivity {
                 WelcomeUsersActivity.this.startActivity(myIntent);
             }
         });
+
+
+        Button buttonTwo = (Button) findViewById(R.id.add_items_button);
+        buttonTwo.setOnClickListener(new Button.OnClickListener() {
+            public void onClick(View v) {
+                Intent myIntent = new Intent(WelcomeUsersActivity.this, AddItemsByTypingActivity
+                        .class);
+                WelcomeUsersActivity.this.startActivity(myIntent);
+            }
+        });
     }
 }
