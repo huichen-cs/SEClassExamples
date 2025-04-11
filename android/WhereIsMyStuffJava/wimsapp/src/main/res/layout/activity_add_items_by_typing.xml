@@ -5,7 +5,122 @@
     android:id="@+id/add_items_by_typing_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="10dp"
     tools:context=".AddItemsByTypingActivity">
 
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <TextView
+            android:id="@+id/add_item_desc_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/add_item_desc_edittext"
+            android:text="@string/add_item_description"/>
+
+        <EditText
+            android:id="@+id/add_item_desc_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="item description"
+            android:ems="8"
+            android:gravity="start|top"
+            android:inputType="textMultiLine"
+            android:minWidth="300dp"
+            android:maxWidth="400dp"
+            android:minHeight="48dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <TextView
+            android:id="@+id/add_item_location_area_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/add_item_location_area_edittext"
+            android:text="@string/add_item_location_area" />
+
+        <EditText
+            android:id="@+id/add_item_location_area_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="item location area"
+            android:inputType="text"
+            android:minHeight="48dp"
+            android:minWidth="300dp"
+            android:maxWidth="400dp"
+            android:padding="10dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <TextView
+            android:id="@+id/add_item_location_subarea_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/add_item_location_subarea_edittext"
+            android:text="@string/add_item_location_subarea" />
+
+        <EditText
+            android:id="@+id/add_item_location_subarea_edittext"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:autofillHints="item location subarea"
+            android:inputType="text"
+            android:minWidth="300dp"
+            android:maxWidth="400dp"
+            android:minHeight="48dp"
+            android:padding="8dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <TextView
+            android:id="@+id/select_item_quantity_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:labelFor="@+id/add_item_quantity_number_picker"
+            android:text="@string/select_item_quantity" />
+
+        <NumberPicker
+            android:id="@+id/add_item_quantity_number_picker"
+            android:layout_width="wrap_content"
+            android:layout_height="68dp"
+            android:maxWidth="400dp"
+            android:minWidth="300dp"
+            android:padding="8dp"/>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="8dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+        <Button
+            android:id="@+id/add_item_by_typing_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/add_item" />
+        </LinearLayout>
+
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

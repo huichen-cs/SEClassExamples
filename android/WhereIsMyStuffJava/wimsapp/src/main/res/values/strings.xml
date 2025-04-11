@@ -6,4 +6,11 @@
     <string name="locate_items">Locate Items</string>
     <string name="enter_item_description">Enter item description</string>
     <string name="add_items">Add Items</string>
+    <string name="add_item_description">Item Description</string>
+    <string name="add_item_location_area">Add Item Location Area</string>
+    <string name="add_item">Add Item</string>
+    <string name="select_item_quantity">Select Item Quantity</string>
+    <string name="add_item_location_subarea">Add Item Location Subarea</string>
+    <string name="added_item_id">Added item %1$d!</string>
+    <string name="added_item_failed">"Failed to add item: %1$s"</string>
 </resources>
